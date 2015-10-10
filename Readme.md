@@ -11,7 +11,9 @@ Just download multicraft.py to your favourite folder :)
 Requirements:
 
 1) A Minecraft Docker container, e.g.: https://github.com/overshard/docker-minecraft
+
   a) You'll have to hack multicraft.py a bit to adapt it to your container's name.
+
 2) [Docker-py](https://github.com/docker/docker-py)
 
 ## Contributing
