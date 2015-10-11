@@ -54,9 +54,10 @@ while instanceCreated == 0:
                 if debug == 1: print "Port %s is free" % defaultport
                 container = createMcInstance(defaultport)
                 instanceCreated = 1
+                counter +=1
 
 # Return Instance ID, port and total number of instances once finished creating the server
 print "Instance ID: %s" % container["Id"]
 print "Listening on port %s" % defaultport
-print "There are %s instances running on this server" % counter+1
+print "There are %s instances running on this server" % counter
 sys.exit()
