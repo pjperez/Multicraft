@@ -48,14 +48,15 @@ while instanceCreated == 0:
                 defaultport += 1
                 counter += 1
                 if counter > maxInstances:
-                        print "Too many instances! you can't run more than %s instances" % counter
+                        print "Too many instances! you can't run more than %s instances" % maxInstances
                         sys.exit()
         else:
                 if debug == 1: print "Port %s is free" % defaultport
                 container = createMcInstance(defaultport)
                 instanceCreated = 1
 
-# Return Instance ID and port once finished creating the server
+# Return Instance ID, port and total number of instances once finished creating the server
 print "Instance ID: %s" % container["Id"]
 print "Listening on port %s" % defaultport
+print "There are %s instances running on this server" % counter+1
 sys.exit()
