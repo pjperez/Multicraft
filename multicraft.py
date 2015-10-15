@@ -10,7 +10,7 @@ import sys
 import os
 import socket
 from docker import Client
-
+from azure.storage.queue import QueueService
 
 debug = 0
 defaultport = 25565
@@ -18,6 +18,11 @@ counter = 0
 instanceCreated = 0
 maxInstances = 3
 imageName = "mcdocker"
+
+# DB update settings
+account_name = "mcdockerqueue"
+account_key = sys.argv[1]
+queuename = "servers"
 
 # Create a new instance on an available port
 def createMcInstance(port):
@@ -60,4 +65,14 @@ while instanceCreated == 0:
 print "Instance ID: %s" % container["Id"]
 print "Listening on port %s" % defaultport
 print "There are %s instances running on this server" % counter
+
+# Update servers queue
+queue_service = QueueService(account_name, account_key)
+try:
+	queue_service.create_queue(queuename)
+except:
+	print "Queue creation failed."
+
+queue_service.put_message(queuename, '{"ContainerID":"%s", "ContainerPort":"%s", "ServerID":"%s"}' % container["Id"], defaultport, socket.gethostname())
+
 sys.exit()

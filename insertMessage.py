@@ -3,8 +3,9 @@ import sys
 from azure.storage.queue import QueueService
 
 account_name = "mcdockerqueue"
-account_key = sys.argv[2]
 queuename = sys.argv[1]
+account_key = sys.argv[2]
+
 
 queue_service = QueueService(account_name, account_key)
 

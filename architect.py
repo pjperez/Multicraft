@@ -31,7 +31,7 @@ if count > 0:
 	# placeholder for DO SOME AMAZING SHIT
 
 	print "start"
-	subprocess.call("./multicraft.py")
+	subprocess.call(["./multicraft.py", account_key])
 	print "end"
 
 	# Remove message from the queue
